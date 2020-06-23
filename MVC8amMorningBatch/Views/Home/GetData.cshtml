@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "GetData";
+}
+
+<h2>GetData</h2>
+
+@*@ViewBag.Lucky.EmpId
+@ViewBag.Lucky.EmpName
+@ViewBag.Lucky.EmpSalary*@
+
+
+ 
+
+@foreach (var item in ViewBag.Lucky)
+{
+    @item.EmpId<br />
+    @item.EmpName<br />
+    @item.EmpSalary<br /><br />
+}
