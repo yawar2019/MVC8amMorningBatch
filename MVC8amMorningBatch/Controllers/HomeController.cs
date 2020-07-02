@@ -28,7 +28,21 @@ namespace MVC8amMorningBatch.Controllers
 
         public ActionResult Index2()
         {
-            return View();
+            List<Employee> listObj = new List<Employee>();
+            Employee objRadhika = new Employee();
+            objRadhika.EmpId = 1;
+            objRadhika.EmpName = "Harini";
+            objRadhika.EmpSalary = 210000;
+
+            Employee objShiva = new Employee();
+            objShiva.EmpId = 2;
+            objShiva.EmpName = "Shiva";
+            objShiva.EmpSalary = 420000;
+
+            listObj.Add(objRadhika);
+            listObj.Add(objShiva);
+
+            return View(listObj);
         }
 
         public string GetData(int? id,string name)
@@ -77,5 +91,36 @@ namespace MVC8amMorningBatch.Controllers
             return View("GetData");
         }
 
+        public ActionResult GetSingleEmpData()
+        {
+            Employee obj = new Models.Employee();
+            obj.EmpId = 1;
+            obj.EmpName = "Harini";
+            obj.EmpSalary = 210000;
+
+            return View(obj);
+        }
+
+        public ActionResult GetMultipeEmpData()
+        {
+            List<Employee> listObj = new List<Employee>();
+            Employee objRadhika = new Employee();
+            objRadhika.EmpId = 1;
+            objRadhika.EmpName = "Harini";
+            objRadhika.EmpSalary = 210000;
+
+            Employee objShiva = new Employee();
+            objShiva.EmpId = 2;
+            objShiva.EmpName = "Shiva";
+            objShiva.EmpSalary = 420000;
+
+            listObj.Add(objRadhika);
+            listObj.Add(objShiva);
+
+
+         
+
+            return View(listObj);
+        }
     }
 }
