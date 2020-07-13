@@ -35,11 +35,11 @@ namespace AdoNet.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int ?id)
+        public RedirectToRouteResult Edit(int ?id)
 
         {
             Employee obj = db.GetEmployeeById(id);
-            return View(obj);
+            return RedirectToAction("index");
         }
 
         [HttpPost]

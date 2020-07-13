@@ -9,9 +9,9 @@ namespace MVC8amMorningBatch.Controllers
     public class EmployeeController : Controller
     {
         // GET: Employee
-        public ActionResult Index()
+        public string EmployeeIndex(int? it)
         {
-            return View();
+            return "Hello World "+ it;
         }
     }
 }

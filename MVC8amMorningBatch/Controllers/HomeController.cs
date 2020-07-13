@@ -122,5 +122,45 @@ namespace MVC8amMorningBatch.Controllers
 
             return View(listObj);
         }
+
+        public ViewResult GetView()
+        {
+            List<Employee> listObj = new List<Employee>();
+            Employee objRadhika = new Employee();
+            objRadhika.EmpId = 1;
+            objRadhika.EmpName = "Harini";
+            objRadhika.EmpSalary = 210000;
+
+            Employee objShiva = new Employee();
+            objShiva.EmpId = 2;
+            objShiva.EmpName = "Shiva";
+            objShiva.EmpSalary = 420000;
+
+            listObj.Add(objRadhika);
+            listObj.Add(objShiva);
+
+            return View("GetMultipeEmpData", listObj);
+        }
+
+        public RedirectResult Goto()
+        {
+            return Redirect("~/home/GetView");
+        }
+
+        public RedirectToRouteResult Gone()
+        {
+
+            return RedirectToAction("EmployeeIndex", "Employee",new {it=1,name="Shiva"});
+        }
+
+        public RedirectToRouteResult Gone2()
+        {
+            return RedirectToRoute("Shiva");
+        }
+
+        public ActionResult getpartial() {
+
+            return View();
+        }
     }
 }

@@ -122,6 +122,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\bird.jpg" />
+    <Content Include="images\birds1.jpg" />
+    <Content Include="images\birds2.jpg" />
+    <Content Include="images\birds3.jpg" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -160,6 +164,9 @@
     <Content Include="Views\Home\GetData.cshtml" />
     <Content Include="Views\Home\GetSingleEmpData.cshtml" />
     <Content Include="Views\Home\GetMultipeEmpData.cshtml" />
+    <Content Include="Views\Shared\_MyLayout.cshtml" />
+    <Content Include="Views\Home\getpartial.cshtml" />
+    <Content Include="Views\Shared\_MyPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
