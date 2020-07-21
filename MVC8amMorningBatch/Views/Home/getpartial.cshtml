@@ -1,4 +1,4 @@
-﻿
+﻿@model List<MVC8amMorningBatch.Models.Employee>
 @{
     ViewBag.Title = "getpartial";
 }
@@ -7,4 +7,20 @@
 
 
 
-@Html.Partial("_MyPartialView")
+@{
+    int a = 1;
+    var s = Html.Partial("_MyPartialView", Model);
+
+    if (a > 0)
+    {
+        @s;
+    }
+    else
+    {
+<span>No Chapati for u</span>
+    }
+
+  }
+   @{
+       Html.RenderPartial("_MyPartialView", Model); 
+    }

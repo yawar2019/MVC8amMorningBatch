@@ -1,5 +1,24 @@
-﻿<ul>
-    <li>Tea</li>
-    <li>Coffee</li>
-    <li>Sulamani Chai</li>
-</ul>
+﻿
+@model List<MVC8amMorningBatch.Models.Employee>
+@{
+    ViewBag.Title = "partial view";
+}
+
+<h2>GetMultipeEmpData from Partial View</h2>
+
+<table class="table-">
+    <tr>
+        <th>EmpId</th>
+        <th>EmpName</th>
+        <th>EmpSalary</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmpId</td>
+            <td>@item.EmpName</td>
+            <td>@item.EmpSalary</td>
+        </tr>
+    }
+</table>
+

@@ -160,7 +160,79 @@ namespace MVC8amMorningBatch.Controllers
 
         public ActionResult getpartial() {
 
-            return View();
+            List<Employee> listObj = new List<Employee>();
+            Employee objRadhika = new Employee();
+            objRadhika.EmpId = 1;
+            objRadhika.EmpName = "Harini";
+            objRadhika.EmpSalary = 210000;
+
+            Employee objShiva = new Employee();
+            objShiva.EmpId = 2;
+            objShiva.EmpName = "Shiva";
+            objShiva.EmpSalary = 420000;
+
+            listObj.Add(objRadhika);
+            listObj.Add(objShiva);
+
+            return View(listObj);
+        }
+
+        public PartialViewResult GetPartialView()
+        {
+            List<Employee> listObj = new List<Employee>();
+            Employee objRadhika = new Employee();
+            objRadhika.EmpId = 1;
+            objRadhika.EmpName = "Harini";
+            objRadhika.EmpSalary = 210000;
+
+            Employee objShiva = new Employee();
+            objShiva.EmpId = 2;
+            objShiva.EmpName = "Shiva";
+            objShiva.EmpSalary = 420000;
+
+            listObj.Add(objRadhika);
+            listObj.Add(objShiva);
+
+            return PartialView("_MyPartialView", listObj);
+
+        }
+
+        public FileResult GetFile()
+        {
+            return File("~/Web.config","application/xml", "Web.config");
+        }
+
+        public JsonResult GetJsonData() {
+            List<Employee> listObj = new List<Employee>();
+            Employee objRadhika = new Employee();
+            objRadhika.EmpId = 1;
+            objRadhika.EmpName = "Harini";
+            objRadhika.EmpSalary = 210000;
+
+            Employee objShiva = new Employee();
+            objShiva.EmpId = 2;
+            objShiva.EmpName = "Shiva";
+            objShiva.EmpSalary = 420000;
+
+            listObj.Add(objRadhika);
+            listObj.Add(objShiva);
+            return Json(listObj,JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ContentResult GetContentData(int? id) {
+            if (id == 1)
+            {
+                return Content("Record is inserted");//string
+            }
+            else if (id == 2) {
+                return Content("<script>alert('Record is Inserted')</script>");//javascript
+            }
+            else
+            {
+                return Content("<p style=color:red>Record is Inserted</p>");//css style 
+
+            }
         }
     }
 }
