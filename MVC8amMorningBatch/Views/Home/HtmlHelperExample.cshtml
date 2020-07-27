@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "HtmlHelperExample";
+    Layout = null;
+}
+<style>
+    .test {
+        font-family: Algerian;
+        font-weight: bolder;
+    }
+</style>
+<script>
+    function myfunction() {
+        alert(Date.now().toString());
+    }
+
+</script>
+
+<h2>HtmlHelperExample</h2>
+
+
+
+@using (Html.BeginForm())
+{
+
+    <span>Name</span>    @Html.TextBox("Name", "Radhika", new { style = "background-color:skyblue;color:white;", @class = "test", @onclick = "myfunction()" }) //<input type="text"  id="Name" name="Name"
+
+    <br /><span>Password</span>@Html.Password("pwd", "shiva")
+
+   
+    <br /> <span>Gender</span>    @Html.RadioButton("Gender", "Male")<label>Male</label>
+    @Html.RadioButton("Gender", "FeMale")<label>FeMale</label><br />
+    @Html.DropDownList("Employee")
+
+}

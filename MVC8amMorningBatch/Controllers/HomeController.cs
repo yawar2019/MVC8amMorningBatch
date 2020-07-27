@@ -234,5 +234,12 @@ namespace MVC8amMorningBatch.Controllers
 
             }
         }
+
+        public ActionResult HtmlHelperExample()
+        {
+            EmployeeEntities db = new EmployeeEntities();
+            ViewBag.Employee = new SelectList(db.employeeDetails, "EmpName", "EmpName");
+            return View();
+        }
     }
 }
