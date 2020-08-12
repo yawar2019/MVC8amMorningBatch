@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -86,6 +87,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -127,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Calculator.asmx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -157,21 +160,62 @@
     <Content Include="Models\EmployeeModel.edmx.diagram">
       <DependentUpon>EmployeeModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Manger\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Default\Index.cshtml" />
+    <Content Include="Areas\Manger\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Manger\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Manger\Views\Basic\Test.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
+    <None Include="Service References\ServiceReference1\Calculator.disco" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <Content Include="Service References\ServiceReference1\MVC8amMorningBatch.ServiceReference1.HelloWorldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceReference2\Service1.disco" />
+    <None Include="Service References\ServiceReference2\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference2\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service1.svc" />
     <Content Include="Web.config" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Employ2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Manger\Controllers\BasicController.cs" />
+    <Compile Include="Areas\Manger\MangerAreaRegistration.cs" />
+    <Compile Include="Calculator.asmx.cs">
+      <DependentUpon>Calculator.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\MyFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IService1.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\employeeDetail.cs">
       <DependentUpon>EmployeeModel.tt</DependentUpon>
@@ -192,6 +236,19 @@
       <DependentUpon>EmployeeModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service1.svc.cs">
+      <DependentUpon>Service1.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -213,6 +270,17 @@
     <Content Include="Views\Home\getpartial.cshtml" />
     <Content Include="Views\Shared\_MyPartialView.cshtml" />
     <Content Include="Views\Home\HtmlHelperExample.cshtml" />
+    <Content Include="Views\Employee\GetRegister.cshtml" />
+    <None Include="Service References\ServiceReference1\Calculator.wsdl" />
+    <Content Include="Views\Employee\GetDigitalCalculator.cshtml" />
+    <None Include="Service References\ServiceReference2\Service1.wsdl" />
+    <None Include="Service References\ServiceReference2\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference2\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Employee\GetPlayer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -222,9 +290,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Manger\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference2\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
